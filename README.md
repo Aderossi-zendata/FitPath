@@ -60,6 +60,8 @@ backend/fitpath/
 
 ## Quick start
 
+Requirements: Python 3.12+, Node 20+, about 2 GB of free disk. The commands below use Windows paths; on macOS and Linux use `.venv/bin/python` instead of `.venv/Scripts/python`.
+
 **1. Data**: download `articles.csv`, `customers.csv`, `transactions_train.csv` from [Kaggle H&M](https://www.kaggle.com/competitions/h-and-m-personalized-fashion-recommendations/data) (the zip files are fine) into `data/raw/`.
 
 **2. Backend** (Python 3.12+)
@@ -82,6 +84,17 @@ cd frontend
 npm install
 npm run dev                  # http://localhost:5173
 ```
+
+Open http://localhost:5173. **My store** → "Analyse another period" → the Black Friday 2019 preset replays the opening scenario of the pitch; **Strategies** is the agent.
+
+**Docker.** The `Dockerfile` builds one image with the dashboard and the API on port 7860 (`backend/fitpath/serve.py`, with a per-visitor limit on the requests that spend LLM tokens or CPU). Mount the `data/` folder prepared in step 2:
+
+```bash
+docker build -t fitpath .
+docker run -p 7860:7860 --env-file .env -v "$PWD/data:/app/data" fitpath    # http://localhost:7860
+```
+
+For a hosted copy, `space/start.sh` can instead download the prepared data at startup from a private Hugging Face dataset (`FITPATH_DATA_REPO`, read with `HF_TOKEN`).
 
 A simulation can also be run from the command line: `python -m fitpath.sim.engine --start 2019-11-25 --days 7 --size medium` (`--size` is the store traffic: low, medium, high).
 
