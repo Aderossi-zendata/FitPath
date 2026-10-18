@@ -8,6 +8,10 @@
 ![Track](https://img.shields.io/badge/TRACK%203-REINVENT%20COMMERCE-blue?style=for-the-badge)
 ![LLM](https://img.shields.io/badge/LLM-AMD%20TOKEN%20FACTORY-ED1C24?style=for-the-badge)
 
+[![Watch the demo video](media/cover.jpg)](media/fitpath-demo.mp4)
+
+▶ **[Watch the demo video](media/fitpath-demo.mp4)** (1:25, with voiceover)
+
 ---
 
 ## What it does
