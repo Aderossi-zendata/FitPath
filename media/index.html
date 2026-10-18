@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FitPath · Demo video</title>
+<meta name="description" content="FitPath, the digital twin of a fashion store: test promotions, layouts and staffing before you try them on real customers.">
+<meta property="og:title" content="FitPath · Demo video">
+<meta property="og:image" content="cover.jpg">
+<style>
+  :root { --bg: #0d1116; --fg: #e8edf1; --muted: #8c99a4; --accent: #e58fa8; }
+  * { box-sizing: border-box; }
+  body { margin: 0; min-height: 100vh; background: var(--bg); color: var(--fg); font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+         display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px 16px; gap: 20px; }
+  h1 { margin: 0; font-size: clamp(28px, 5vw, 44px); letter-spacing: -0.02em; }
+  h1 span { color: var(--accent); }
+  p { margin: 0; color: var(--muted); text-align: center; }
+  video { width: min(100%, 1100px); aspect-ratio: 16 / 9; border-radius: 12px; background: #000; }
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+<h1>Fit<span>Path</span></h1>
+<video src="fitpath-demo.mp4" poster="cover.jpg" controls preload="metadata" playsinline></video>
+<p>Make your mistakes in the twin, not in your store. · <a href="https://github.com/Aderossi-zendata/FitPath">Code on GitHub</a></p>
+</body>
+</html>
