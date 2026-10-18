@@ -1,0 +1,10 @@
+duckdb>=1.5
+pyarrow>=20
+pandas>=2.2
+numpy>=2
+scikit-learn>=1.6
+fastapi>=0.115
+uvicorn[standard]>=0.30
+python-dotenv>=1.0
+google-genai>=1.0
+openai>=1.50
