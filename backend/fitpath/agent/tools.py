@@ -80,7 +80,9 @@ def _eur(v: float, sign: bool = False) -> str:
 def sales_data(a, ctx):
     r, topic = _real(), a.get("topic") or "best_sellers"
     season = a.get("season") or ("Winter", "Spring", "Summer", "Autumn")[(DATA_END.month % 12) // 3]
-    if topic == "seasonality":
+    if topic == "overview":
+        res = {**r["overview"], "price_note": r.get("price_note")}
+    elif topic == "seasonality":
         lift = r["season_lift_full"].get(season, {})
         res = {"season": season, "category_lift": dict(sorted(lift.items(), key=lambda kv: -kv[1]))}
     elif topic == "weekdays":
@@ -254,8 +256,8 @@ PERIOD = {"start": {"type": "string", "description": "YYYY-MM-DD"}, "days": {"ty
 
 TOOLS = {
     "sales_data": {"fn": sales_data, "title": "Reads the real sales data", "ask": lambda a: False,
-                   "desc": "Insights from real H&M sales: seasonality by category, weekdays, payday effect, markdowns, products bought together, trends, best sellers.",
-                   "params": {"type": "object", "properties": {"topic": {"type": "string", "enum": ["seasonality", "weekdays", "payday", "markdowns", "bought_together", "trends", "best_sellers"]},
+                   "desc": "Insights from real H&M sales: overview (period, receipts, customers, items, revenue, average receipt, items per receipt), seasonality by category, weekdays, payday effect, markdowns, products bought together, trends, best sellers.",
+                   "params": {"type": "object", "properties": {"topic": {"type": "string", "enum": ["overview", "seasonality", "weekdays", "payday", "markdowns", "bought_together", "trends", "best_sellers"]},
                                                                "season": {"type": "string", "enum": ["Winter", "Spring", "Summer", "Autumn"]}}, "required": ["topic"]}},
     "forecast": {"fn": forecast, "title": "Forecasts the visits", "ask": lambda a: False,
                  "desc": "Day-by-day forecast of store visits for a period (also in the future), with the method's mean error.",
